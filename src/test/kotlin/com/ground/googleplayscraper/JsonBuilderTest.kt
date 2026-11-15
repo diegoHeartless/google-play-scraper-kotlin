@@ -24,8 +24,8 @@ class JsonBuilderTest {
             stars = null,
             sentiment = null
         )
-        assertTrue(payload.startsWith("""[null,[2,2,[150],null,[null,null,null,null,null,null,null,null,null]]"""))
-        assertTrue(payload.endsWith("""[com.example.app",7]]"""))
+        assertTrue(payload.startsWith("""[null,[2,${GpConstants.Sort.NEWEST.raw},[150],null,"""))
+        assertTrue(payload.endsWith("""[${JsonBuilder.quote("com.example.app")},7]]"""))
     }
 
     @Test

@@ -19,8 +19,11 @@ class ParsingTest {
         )
         val block = root["ds:3"]
         assertNotNull(block)
-        assertEquals(2, Paths.int(block, 0, 0, "a", 1))
+        // data:[0,[{"a":[1,2,3]}],null] -> ds:3 is [0, [{a:[1,2,3]}], null]
+        assertEquals(3, Paths.int(block, 1, 0, "a", 2))
+        assertEquals(2, Paths.long(block, 1, 0, "a", 1))
         assertNull(Paths.string(block, 9, 9))
+        assertNull(Paths.int(block, 1, 0, "a", 7))
     }
 
     @Test

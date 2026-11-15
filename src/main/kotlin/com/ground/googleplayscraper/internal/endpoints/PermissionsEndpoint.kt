@@ -52,7 +52,7 @@ internal class PermissionsEndpoint(private val http: HttpClient) {
                     val items = Paths.array(entry, 2) ?: continue
                     for (item in items) {
                         val name = Paths.string(item, 1) ?: continue
-                        result.add(Permission(permission = name, type = group.type))
+                        result.add(com.ground.googleplayscraper.model.Permission(permission = name, type = group.type))
                     }
                 }
             }
@@ -65,7 +65,7 @@ internal class PermissionsEndpoint(private val http: HttpClient) {
             return common
                 .filter { (it as? JsonArray)?.isNotEmpty() == true }
                 .mapNotNull { entry -> Paths.string(entry, 0) }
-                .map { Permission(permission = it, type = GpConstants.Permission.COMMON.type) }
+                .map { com.ground.googleplayscraper.model.Permission(permission = it, type = GpConstants.Permission.COMMON.type) }
         }
     }
 }

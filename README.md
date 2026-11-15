@@ -19,7 +19,7 @@ returns typed data classes instead of raw JSON.
 
 ## Install
 
-The library is a plain JVM artifact (`java-library`, Kotlin 1.9, JVM 11+), so it
+The library is a plain JVM artifact (`java-library`, Kotlin 1.9, JVM 17), so it
 can be used from a server, a CLI or an Android app.
 
 ```kotlin
@@ -27,6 +27,22 @@ dependencies {
     implementation("com.ground:google-play-scraper-kotlin:1.0.0")
 }
 ```
+
+## Build
+
+```bash
+gradle build        # compiles the library, runs the unit tests, produces build/libs/*.jar
+gradle publishToMavenLocal
+```
+
+The repository has no Gradle wrapper yet, so build with a local Gradle 8.7+
+(`gradle wrapper` generates the wrapper if you want the usual `./gradlew`).
+
+CI (`.github/workflows/build.yml`) builds and tests every push and pull request
+against `main` on JDK 17 and uploads the jar plus the test report as artifacts.
+The tests are offline: they cover the request payloads and the parsing helpers,
+not the live Play Store.
+
 
 ## Usage
 

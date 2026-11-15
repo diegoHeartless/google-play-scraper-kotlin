@@ -1,11 +1,11 @@
-package com.github.diegoheartless.gplayscraper.internal.endpoints
+package com.ground.googleplayscraper.internal.endpoints
 
-import com.github.diegoheartless.gplayscraper.BASE_URL
-import com.github.diegoheartless.gplayscraper.internal.HttpClient
-import com.github.diegoheartless.gplayscraper.internal.MappingHelpers
-import com.github.diegoheartless.gplayscraper.internal.Paths
-import com.github.diegoheartless.gplayscraper.internal.ScriptData
-import com.github.diegoheartless.gplayscraper.model.AppSummary
+import com.ground.googleplayscraper.BASE_URL
+import com.ground.googleplayscraper.internal.HttpClient
+import com.ground.googleplayscraper.internal.MappingHelpers
+import com.ground.googleplayscraper.internal.Paths
+import com.ground.googleplayscraper.internal.ScriptData
+import com.ground.googleplayscraper.model.AppSummary
 import kotlinx.serialization.json.JsonElement
 
 /**

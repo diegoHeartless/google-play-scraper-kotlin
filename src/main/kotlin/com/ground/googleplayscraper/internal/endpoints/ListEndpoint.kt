@@ -1,13 +1,13 @@
-package com.github.diegoheartless.gplayscraper.internal.endpoints
+package com.ground.googleplayscraper.internal.endpoints
 
-import com.github.diegoheartless.gplayscraper.BASE_URL
-import com.github.diegoheartless.gplayscraper.DEFAULT_COUNTRY
-import com.github.diegoheartless.gplayscraper.DEFAULT_LANG
-import com.github.diegoheartless.gplayscraper.GpConstants
-import com.github.diegoheartless.gplayscraper.internal.HttpClient
-import com.github.diegoheartless.gplayscraper.internal.Paths
-import com.github.diegoheartless.gplayscraper.internal.ScriptData
-import com.github.diegoheartless.gplayscraper.model.AppSummary
+import com.ground.googleplayscraper.BASE_URL
+import com.ground.googleplayscraper.DEFAULT_COUNTRY
+import com.ground.googleplayscraper.DEFAULT_LANG
+import com.ground.googleplayscraper.GpConstants
+import com.ground.googleplayscraper.internal.HttpClient
+import com.ground.googleplayscraper.internal.Paths
+import com.ground.googleplayscraper.internal.ScriptData
+import com.ground.googleplayscraper.model.AppSummary
 
 /**
  * Port of `lib/list.js`: fetches a chart (top free / paid / grossing) of a

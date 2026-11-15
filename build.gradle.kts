@@ -4,7 +4,7 @@ plugins {
     `maven-publish`
 }
 
-group = "io.github.diegoheartless"
+group = "com.ground"
 version = "1.0.0"
 
 repositories {

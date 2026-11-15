@@ -1,4 +1,4 @@
-package com.github.diegoheartless.gplayscraper.internal
+package com.ground.googleplayscraper.internal
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray

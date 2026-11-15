@@ -1,15 +1,15 @@
-package com.github.diegoheartless.gplayscraper.internal.endpoints
+package com.ground.googleplayscraper.internal.endpoints
 
-import com.github.diegoheartless.gplayscraper.BASE_URL
-import com.github.diegoheartless.gplayscraper.DEFAULT_COUNTRY
-import com.github.diegoheartless.gplayscraper.DEFAULT_LANG
-import com.github.diegoheartless.gplayscraper.internal.HttpClient
-import com.github.diegoheartless.gplayscraper.internal.MappingHelpers
-import com.github.diegoheartless.gplayscraper.internal.ParsedData
-import com.github.diegoheartless.gplayscraper.internal.Paths
-import com.github.diegoheartless.gplayscraper.internal.ScriptData
-import com.github.diegoheartless.gplayscraper.model.AppDetails
-import com.github.diegoheartless.gplayscraper.model.Category
+import com.ground.googleplayscraper.BASE_URL
+import com.ground.googleplayscraper.DEFAULT_COUNTRY
+import com.ground.googleplayscraper.DEFAULT_LANG
+import com.ground.googleplayscraper.internal.HttpClient
+import com.ground.googleplayscraper.internal.MappingHelpers
+import com.ground.googleplayscraper.internal.ParsedData
+import com.ground.googleplayscraper.internal.Paths
+import com.ground.googleplayscraper.internal.ScriptData
+import com.ground.googleplayscraper.model.AppDetails
+import com.ground.googleplayscraper.model.Category
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonPrimitive

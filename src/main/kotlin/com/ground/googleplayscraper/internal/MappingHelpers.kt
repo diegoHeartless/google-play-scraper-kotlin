@@ -1,9 +1,9 @@
-package com.github.diegoheartless.gplayscraper.internal
+package com.ground.googleplayscraper.internal
 
-import com.github.diegoheartless.gplayscraper.model.AppFeature
-import com.github.diegoheartless.gplayscraper.model.Category
-import com.github.diegoheartless.gplayscraper.model.Comment
-import com.github.diegoheartless.gplayscraper.model.Histogram
+import com.ground.googleplayscraper.model.AppFeature
+import com.ground.googleplayscraper.model.Category
+import com.ground.googleplayscraper.model.Comment
+import com.ground.googleplayscraper.model.Histogram
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonPrimitive

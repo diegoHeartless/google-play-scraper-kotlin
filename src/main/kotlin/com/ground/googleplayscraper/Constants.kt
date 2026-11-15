@@ -1,4 +1,4 @@
-package com.github.diegoheartless.gplayscraper
+package com.ground.googleplayscraper
 
 /**
  * Base Play Store URL. Every request built by the library is relative to it.

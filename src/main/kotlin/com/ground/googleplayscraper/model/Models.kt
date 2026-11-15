@@ -1,4 +1,4 @@
-package com.github.diegoheartless.gplayscraper.model
+package com.ground.googleplayscraper.model
 
 /**
  * Rating distribution of an app, as shown on its Play Store page.
@@ -139,7 +139,7 @@ data class SearchResult(
     val score: Double?
 )
 
-/** A user review, as returned by [com.github.diegoheartless.gplayscraper.Scraper.reviews]. */
+/** A user review, as returned by the scraper's review call. */
 data class Review(
     val id: String?,
     val userName: String?,

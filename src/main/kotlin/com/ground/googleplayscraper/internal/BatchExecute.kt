@@ -1,6 +1,6 @@
-package com.github.diegoheartless.gplayscraper.internal
+package com.ground.googleplayscraper.internal
 
-import com.github.diegoheartless.gplayscraper.BASE_URL
+import com.ground.googleplayscraper.BASE_URL
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
@@ -24,10 +24,22 @@ internal object BatchExecute {
         lang: String,
         country: String
     ): JsonElement? {
+        val response = callRaw(http, rpcId, payload, lang, country) ?: return null
+        return extractPayload(response)
+    }
+
+    /** Performs the call and returns the raw response body. */
+    fun callRaw(
+        http: HttpClient,
+        rpcId: String,
+        payload: String,
+        lang: String,
+        country: String
+    ): String? {
         val url = HttpClient.url(
             "$BASE_URL/_/PlayStoreUi/data/batchexecute",
             linkedMapOf(
-                "rpcids" to "qnKhOb",
+                "rpcids" to rpcId,
                 "f.sid" to "-697906427155521722",
                 "bl" to "boq_playuiserver_20190903.08_p0",
                 "hl" to lang,
@@ -39,9 +51,8 @@ internal object BatchExecute {
                 "_reqid" to "1065213"
             )
         )
-        val body = "[[[\"$rpcId\",${JsonPrimitive(payload).toString()},null,\"generic\"]]]"
-        val response = http.post(url, mapOf("f.req" to body))
-        return extractPayload(response)
+        val envelope = "[[[${JsonBuilder.quote(rpcId)},${JsonBuilder.quote(payload)},null,\"generic\"]]]"
+        return http.post(url, mapOf("f.req" to envelope))
     }
 
     /** Extracts the `payload` field of a batchexecute response. */

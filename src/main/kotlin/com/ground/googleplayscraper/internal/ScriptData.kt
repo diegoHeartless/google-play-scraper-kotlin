@@ -6,9 +6,6 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.booleanOrNull
-import kotlinx.serialization.json.doubleOrNull
-import kotlinx.serialization.json.longOrNull
 
 /**
  * Everything the Play Store embeds in an app/details page lives inside
@@ -128,16 +125,16 @@ internal object Paths {
     }
 
     fun long(root: JsonElement?, vararg path: Any): Long? =
-        (path(root, *path) as? JsonPrimitive)?.let { kotlinx.serialization.json.longOrNull(it) }
+        (path(root, *path) as? JsonPrimitive)?.contentOrNull?.toLongOrNull()
 
     fun int(root: JsonElement?, vararg path: Any): Int? =
-        (path(root, *path) as? JsonPrimitive)?.let { kotlinx.serialization.json.longOrNull(it) }?.toInt()
+        (path(root, *path) as? JsonPrimitive)?.contentOrNull?.toIntOrNull()
 
     fun double(root: JsonElement?, vararg path: Any): Double? =
-        (path(root, *path) as? JsonPrimitive)?.let { kotlinx.serialization.json.doubleOrNull(it) }
+        (path(root, *path) as? JsonPrimitive)?.contentOrNull?.toDoubleOrNull()
 
     fun boolean(root: JsonElement?, vararg path: Any): Boolean? =
-        (path(root, *path) as? JsonPrimitive)?.let { kotlinx.serialization.json.booleanOrNull(it) }
+        (path(root, *path) as? JsonPrimitive)?.contentOrNull?.toBooleanStrictOrNull()
 
     fun array(root: JsonElement?, vararg path: Any): JsonArray? =
         path(root, *path) as? JsonArray

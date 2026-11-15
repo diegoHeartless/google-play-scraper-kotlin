@@ -124,4 +124,19 @@ object GpConstants {
         COMMON(0),
         OTHER(1)
     }
+
+    /**
+     * Permission group indexes inside the `xdSrCf` response of the permissions
+     * endpoint. [type] is the value stored in [com.ground.googleplayscraper.model.Permission.type].
+     */
+    enum class Permission(val raw: String, val index: Int, val type: Int) {
+        COMMON("COMMON", 0, 0),
+        OTHER("OTHER", 1, 1),
+        DEVICE("DEVICE", 2, 2),
+        BLUETOOTH("BLUETOOTH", 3, 3),
+        NFC("NFC", 4, 4),
+        WIFI("WIFI", 5, 5);
+
+        override fun toString(): String = raw
+    }
 }

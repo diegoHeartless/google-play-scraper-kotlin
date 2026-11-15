@@ -8,6 +8,8 @@ import com.ground.googleplayscraper.internal.HttpClient
 import com.ground.googleplayscraper.internal.JsonBuilder
 import com.ground.googleplayscraper.internal.Paths
 import com.ground.googleplayscraper.model.Permission
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
 
 /**
  * Port of `lib/permissions.js`: reads the declared permissions of an app from
@@ -39,25 +41,18 @@ internal class PermissionsEndpoint(private val http: HttpClient) {
 
         private const val RPC_ID = "xdSrCf"
 
-        private val PERMISSION_TYPES = listOf(
-            GpConstants.Permission.COMMON.raw,
-            GpConstants.Permission.OTHER.raw,
-            GpConstants.Permission.DEVICE.raw,
-            GpConstants.Permission.BLUETOOTH.raw,
-            GpConstants.Permission.NFC.raw,
-            GpConstants.Permission.WIFI.raw
-        )
+        private val PERMISSION_GROUPS = GpConstants.Permission.entries
 
         /** Maps the `[permission, type]` entries of every permission group. */
-        fun fullPermissions(data: kotlinx.serialization.json.JsonElement): List<Permission> {
+        fun fullPermissions(data: JsonElement): List<Permission> {
             val result = mutableListOf<Permission>()
-            for (type in PERMISSION_TYPES) {
-                val group = Paths.array(data, type.toInt()) ?: continue
-                for (entry in group) {
+            for (group in PERMISSION_GROUPS) {
+                val entries = Paths.array(data, group.index) ?: continue
+                for (entry in entries) {
                     val items = Paths.array(entry, 2) ?: continue
                     for (item in items) {
                         val name = Paths.string(item, 1) ?: continue
-                        result.add(Permission(permission = name, type = type))
+                        result.add(Permission(permission = name, type = group.type))
                     }
                 }
             }
@@ -65,12 +60,12 @@ internal class PermissionsEndpoint(private val http: HttpClient) {
         }
 
         /** Returns only the permission names of the common group. */
-        fun shortPermissions(data: kotlinx.serialization.json.JsonElement): List<Permission> {
-            val common = Paths.array(data, GpConstants.Permission.COMMON.raw.toInt()) ?: return emptyList()
+        fun shortPermissions(data: JsonElement): List<Permission> {
+            val common = Paths.array(data, GpConstants.Permission.COMMON.index) ?: return emptyList()
             return common
-                .filter { (it as? kotlinx.serialization.json.JsonArray)?.isNotEmpty() == true }
+                .filter { (it as? JsonArray)?.isNotEmpty() == true }
                 .mapNotNull { entry -> Paths.string(entry, 0) }
-                .map { Permission(permission = it, type = GpConstants.Permission.COMMON.raw) }
+                .map { Permission(permission = it, type = GpConstants.Permission.COMMON.type) }
         }
     }
 }

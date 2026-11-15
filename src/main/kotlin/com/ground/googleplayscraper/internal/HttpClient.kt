@@ -1,7 +1,7 @@
 package com.ground.googleplayscraper.internal
 
 import okhttp3.FormBody
-import okhttp3.HttpUrl
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
@@ -55,7 +55,7 @@ internal class HttpClient(
 
         /** Builds a URL with the given query parameters appended. */
         fun url(url: String, params: Map<String, String?>): String {
-            val builder = HttpUrl.get(url).newBuilder()
+            val builder = url.toHttpUrl().newBuilder()
             params.forEach { (k, v) -> if (v != null) builder.addQueryParameter(k, v) }
             return builder.build().toString()
         }

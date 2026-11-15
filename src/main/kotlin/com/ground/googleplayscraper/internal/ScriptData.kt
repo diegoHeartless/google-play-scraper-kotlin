@@ -128,16 +128,16 @@ internal object Paths {
     }
 
     fun long(root: JsonElement?, vararg path: Any): Long? =
-        (path(root, *path) as? JsonPrimitive)?.longOrNull()
+        (path(root, *path) as? JsonPrimitive)?.let { kotlinx.serialization.json.longOrNull(it) }
 
     fun int(root: JsonElement?, vararg path: Any): Int? =
-        (path(root, *path) as? JsonPrimitive)?.longOrNull()?.toInt()
+        (path(root, *path) as? JsonPrimitive)?.let { kotlinx.serialization.json.longOrNull(it) }?.toInt()
 
     fun double(root: JsonElement?, vararg path: Any): Double? =
-        (path(root, *path) as? JsonPrimitive)?.doubleOrNull()
+        (path(root, *path) as? JsonPrimitive)?.let { kotlinx.serialization.json.doubleOrNull(it) }
 
     fun boolean(root: JsonElement?, vararg path: Any): Boolean? =
-        (path(root, *path) as? JsonPrimitive)?.booleanOrNull()
+        (path(root, *path) as? JsonPrimitive)?.let { kotlinx.serialization.json.booleanOrNull(it) }
 
     fun array(root: JsonElement?, vararg path: Any): JsonArray? =
         path(root, *path) as? JsonArray

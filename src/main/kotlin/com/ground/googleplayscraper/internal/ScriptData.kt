@@ -19,7 +19,7 @@ object ScriptData {
 
     private val SCRIPT_REGEX = Regex(">AF_initDataCallback[\\s\\S]*?</script")
     private val KEY_REGEX = Regex("(ds:.*?)'")
-    private val VALUE_REGEX = Regex("data:([\\s\\S]*?), sideChannel: \\{\\}\\);<\\/")
+    private val VALUE_REGEX = Regex("data:([\\s\\S]*?),\\s*sideChannel:")
     private val SERVICE_REQUESTS_REGEX =
         Regex("; var AF_dataServiceRequests[\\s\\S]*?; var AF_initDataChunkQueue")
     private val SERVICE_VALUES_REGEX = Regex("\\{'ds:[\\s\\S]*}}")

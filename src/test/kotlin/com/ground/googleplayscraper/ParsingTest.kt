@@ -12,9 +12,12 @@ class ParsingTest {
 
     @Test
     fun `dot paths navigate arrays and objects`() {
+        // Real pages embed the block twice per script tag: a single-line first
+        // copy without the data field, then the full one with data/sideChannel.
         val root = ScriptData.parse(
             """
-            <script>AF_initDataCallback({key: 'ds:3', hash: '1', data:[0,[{"a":[1,2,3]}],null], sideChannel: {}});</script>
+            <script nonce="x">AF_initDataCallback({key: 'ds:3', isError:  false , hash: '1', sideChannel: {}});</script>
+            <script nonce="x">AF_initDataCallback({key: 'ds:3', hash: '1', data:[0,[{"a":[1,2,3]}],null], sideChannel: {}});</script>
             """.trimIndent()
         )
         val block = root["ds:3"]
